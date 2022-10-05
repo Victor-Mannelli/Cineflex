@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from "./Header";
+import GlobalStyles from "./GlobalStyles";
+import MoviesPage from "./MoviesPage";
+import SessionTimePage from "./SessionTimePage";
+import SeatsPage from "./SeatsPage";
+import ReceiptPage from "./ReceiptPage";
 
-function App() {
+import React from "react";
+import {BrowserRouter, Routes, Route } from "react-router-dom";
+import styled from "styled-components";
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Header />
+      <Main> 
+        <Routes>
+          <Route path="/" element={< MoviesPage/>} />
+          <Route path="/SessionTime" element={< SessionTimePage/>} />
+          <Route path="/Seats" element={< SeatsPage/>} />
+          <Route path="/Receipt" element={< ReceiptPage/>} />
+        </Routes>
+      </Main>
+        <GlobalStyles />
+    </BrowserRouter>
   );
 }
-
-export default App;
+const Main = styled.div `
+  margin-top: 67px;
+`
