@@ -2,25 +2,29 @@ import styled from "styled-components";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import React from 'react';
+import {Link} from "react-router-dom"
 
 export default function MoviesPage() {
-    const [apiList, setApiList] = useState([])
-
+    const [apiMovieList, setApiMovieList] = useState([])
     useEffect(() => {
-
         const promise = axios.get("https://mock-api.driven.com.br/api/v5/cineflex/movies");
-
-        promise.then(answer => setApiList(answer.data))
+        promise.then(answer => setApiMovieList(answer.data))
 
     }, [])
+    
+    console.log(apiMovieList)
 
     return (
         <StyledMoviePage>
-            <H1div>
+            <PageTitle>
                 <h1> Selecione o filme </h1>
-            </H1div>
+            </PageTitle>
             <Movies>
-                {apiList.map(e => < Movie key={e.id} image={e.posterURL} />)}
+                {apiMovieList.map(e => 
+                <Link key={e.id} to={`/sessions/${e.id}`}>
+                    < Movie image={e.posterURL} />
+                </Link>
+                )}
             </Movies>
         </StyledMoviePage>
     )
@@ -33,7 +37,7 @@ function Movie({ image }) {
     )
 }
 
-const H1div = styled.div`
+const PageTitle = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;

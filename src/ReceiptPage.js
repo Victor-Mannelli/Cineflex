@@ -4,9 +4,9 @@ import React from 'react';
 export default function ReceiptPage(){
     return (
         <StyledReceiptPage>
-            <H1div>
+            <PageTitle>
                 <h1> Pedido feito com sucesso </h1>
-            </H1div>
+            </PageTitle>
         </StyledReceiptPage>
     )
 }
@@ -21,7 +21,7 @@ const StyledReceiptPage = styled.div `
         color: #247A6B;
     }
 `
-const H1div = styled.div `
+const PageTitle = styled.div `
     display: flex;
     flex-direction: column;
     justify-content: center;

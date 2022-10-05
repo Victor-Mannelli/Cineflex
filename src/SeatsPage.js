@@ -4,21 +4,13 @@ import React from 'react';
 export default function SeatsPage(){
     return (
         <StyledSeatsPage>
-            <div>
+            <PageTitle>
                 <h1> Selecione o(s) assentos(s) </h1>
-            </div>
+            </PageTitle>
         </StyledSeatsPage>
     )
 }
 const StyledSeatsPage = styled.div `
-    div {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        height: 110px;
-        width: 100%;
-    }
     h1 {
         text-align: center;
         font-family: 'Roboto';
@@ -27,4 +19,13 @@ const StyledSeatsPage = styled.div `
         letter-spacing: 0.04em;
         color: #293845;
     }
+`
+const PageTitle = styled.div `
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    height: 110px;
+    width: 100%;
 `

@@ -1,7 +1,7 @@
 import Header from "./Header";
 import GlobalStyles from "./GlobalStyles";
 import MoviesPage from "./MoviesPage";
-import SessionTimePage from "./SessionTimePage";
+import SessionsTimePage from "./SessionsTimePage";
 import SeatsPage from "./SeatsPage";
 import ReceiptPage from "./ReceiptPage";
 
@@ -13,12 +13,13 @@ export default function App() {
   return (
     <BrowserRouter>
       <Header />
-      <Main> 
+      <Main>
         <Routes>
           <Route path="/" element={< MoviesPage/>} />
-          <Route path="/SessionTime" element={< SessionTimePage/>} />
-          <Route path="/Seats" element={< SeatsPage/>} />
-          <Route path="/Receipt" element={< ReceiptPage/>} />
+          <Route path="/sessions/:id" element={< SessionsTimePage/>} />
+          <Route path="/seats" element={< SeatsPage/>} />
+          <Route path="/receipt" element={< ReceiptPage/>} />
+          <Route path="/*" element={<h1> ERRO 404 </h1>} />
         </Routes>
       </Main>
         <GlobalStyles />
