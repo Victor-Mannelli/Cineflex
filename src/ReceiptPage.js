@@ -1,7 +1,19 @@
 import styled from "styled-components"
-import React from 'react';
+import React, { useState , useEffect} from 'react';
+import { useParams } from "react-router-dom";
 
 export default function ReceiptPage(){
+    const test = useParams()
+    const [a,seta] = useState("")
+
+    useEffect(() => {
+      
+        
+    
+        console.log(test)
+    }, [])
+  
+
     return (
         <StyledReceiptPage>
             <PageTitle>

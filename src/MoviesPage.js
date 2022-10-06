@@ -11,8 +11,6 @@ export default function MoviesPage() {
         promise.then(answer => setApiMovieList(answer.data))
 
     }, [])
-    
-    console.log(apiMovieList)
 
     return (
         <StyledMoviePage>

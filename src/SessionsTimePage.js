@@ -1,22 +1,20 @@
 import styled from "styled-components";
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import loading from "./files/loading.gif"
 
-export default function SessionsTimePage({}){
+export default function SessionsTimePage(){
     let { id } = useParams();
-    const [apiMovieData, setApiMovieData] = useState("")
-    const [apiDaysData, setApiDaysData] = useState([])
+    const [apiMovieData, setApiMovieData] = useState("");
+    const [apiDaysData, setApiDaysData] = useState([]);
     useEffect(() => {
       
         const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/movies/${id}/showtimes`)
         promise.then((answer) => {setApiMovieData(answer.data); setApiDaysData(answer.data.days)})
     }, [])
 
-    console.log(apiMovieData)
     if (apiDaysData.length === 0) return <Loading> <img src={loading} alt="loading" /> </Loading>
-
     return (
         <StyledSessionsTimePage>
             <PageTitle>
@@ -27,7 +25,7 @@ export default function SessionsTimePage({}){
             </AvalableSessions>
             <SessionsFooter>
                 <MoviePoster>
-                    <img src={apiMovieData.posterURL} alt="Poster Image"/>
+                    <img src={apiMovieData.posterURL} alt="Poster"/>
                 </MoviePoster>
                 <h1> {apiMovieData.title}</h1>
             </SessionsFooter>
@@ -39,7 +37,11 @@ function Session({weekday, date, showtimes}){
     return (
         <PlayTime>
             <h1>{weekday} - {date} </h1>
-            {showtimes.map(e => <button key={e.id}> {e.name} </button>)}
+            {showtimes.map(e => 
+                <Link key={e.id} to={`/seats/${e.id}`}>
+                    <button> {e.name} </button>
+                </Link>
+            )}
         </PlayTime>
     )
 }
@@ -64,7 +66,8 @@ const PageTitle = styled.div `
 `
 const AvalableSessions = styled.div `
     height: 100%;
-    margin-left: 24px;
+    margin: 0 0 117px 24px;
+    overflow: scroll;
 `
 const SessionsFooter = styled.div `
     position: fixed;
@@ -112,8 +115,10 @@ const Loading = styled.div `
     }
 `
 const PlayTime = styled.div `
+
     h1 {
         text-align: start;
+        text-decoration: none;
         margin-bottom: 25px;
     }
     button {

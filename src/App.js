@@ -17,7 +17,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={< MoviesPage/>} />
           <Route path="/sessions/:id" element={< SessionsTimePage/>} />
-          <Route path="/seats" element={< SeatsPage/>} />
+          <Route path="/seats/:id" element={< SeatsPage/>} />
           <Route path="/receipt" element={< ReceiptPage/>} />
           <Route path="/*" element={<h1> ERRO 404 </h1>} />
         </Routes>
