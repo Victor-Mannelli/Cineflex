@@ -2,15 +2,15 @@ import styled from "styled-components";
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 
-export default function ReceiptPage() {
+export default function ReceiptPage({brightness}) {
 	const { state } = useLocation();
 
 	return (
-		<StyledReceiptPage>
+		<StyledReceiptPage brightness={brightness}>
 			<PageTitle>
 				<h1> Pedido feito com sucesso </h1>
 			</PageTitle>
-			<InfoDiv>
+			<InfoDiv brightness={brightness}>
 				<h1> Filme e sessão </h1>
 				<div>
 					<p>{state.seatsApi.movie.title}</p>
@@ -19,13 +19,15 @@ export default function ReceiptPage() {
 					</p>
 				</div>
 			</InfoDiv>
-			<InfoDiv>
+			<InfoDiv brightness={brightness}>
 				<h1> Ingressos </h1>
 				<div>
-					{state.selectedSeats.map((e) => ( <p key={e}> Assento {e} </p>))}
+					{state.selectedSeats.map((e) => (
+						<p key={e}> Assento {e} </p>
+					))}
 				</div>
 			</InfoDiv>
-			<InfoDiv>
+			<InfoDiv brightness={brightness}>
 				<h1> Comprador </h1>
 				<div>
 					{<p> Nome: {state.nameInput} </p>}
@@ -42,6 +44,7 @@ export default function ReceiptPage() {
 }
 const StyledReceiptPage = styled.div`
 	margin: 0 24px;
+	height: 100vh;
 
 	h1 {
 		text-align: center;
@@ -50,7 +53,7 @@ const StyledReceiptPage = styled.div`
 		font-size: 24px;
 		line-height: 28px;
 		letter-spacing: 0.04em;
-		color: #247a6b;
+		color: ${props => props.brightness ? "#ffffff" : "#293845"};
 	}
 `;
 const PageTitle = styled.div`
@@ -64,24 +67,25 @@ const PageTitle = styled.div`
 `;
 const InfoDiv = styled.div`
 	h1 {
-        text-align: start;
+		text-align: start;
 		font-weight: 700;
 		font-size: 24px;
 		line-height: 28px;
 		letter-spacing: 0.04em;
-		color: #293845;
+		color: ${props => props.brightness ? "#ffffff" : "#293845"};
+		margin-bottom: 10px;
 	}
-    div {
-        margin-bottom: 40px;
+	div {
+		margin-bottom: 40px;
 
-        p {
-            font-family: 'Roboto';
-            font-size: 22px;
-            line-height: 26px;
-            letter-spacing: 0.04em;
-            color: #293845;
-        }
-    }
+		p {
+			font-family: "Roboto";
+			font-size: 22px;
+			line-height: 26px;
+			letter-spacing: 0.04em;
+			color: ${props => props.brightness ? "#ffffff" : "#293845"};
+		}
+	}
 `;
 const HomeButtonDiv = styled.div`
 	display: flex;

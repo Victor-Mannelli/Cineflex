@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import React from 'react';
 import {Link} from "react-router-dom"
 
-export default function MoviesPage() {
+export default function MoviesPage({brightness}) {
     const [apiMovieList, setApiMovieList] = useState([])
     useEffect(() => {
         const promise = axios.get("https://mock-api.driven.com.br/api/v5/cineflex/movies");
@@ -13,23 +13,23 @@ export default function MoviesPage() {
     }, [])
 
     return (
-        <StyledMoviePage>
+        <StyledMoviePage brightness={brightness} >
             <PageTitle>
                 <h1> Selecione o filme </h1>
             </PageTitle>
-            <Movies>
+            <Movies brightness={brightness}>
                 {apiMovieList.map(e => 
                 <Link key={e.id} to={`/sessions/${e.id}`}>
-                    < Movie image={e.posterURL} />
+                    < Movie image={e.posterURL} brightness={brightness} />
                 </Link>
                 )}
             </Movies>
         </StyledMoviePage>
     )
 }
-function Movie({ image }) {
+function Movie({ image, brightness }) {
     return (
-        <MovieAdvertise>
+        <MovieAdvertise brightness={brightness}>
             <img src={image} alt="" />
         </MovieAdvertise>
     )
@@ -50,7 +50,7 @@ const StyledMoviePage = styled.div`
         font-size: 24px;
         line-height: 28px;
         letter-spacing: 0.04em;
-        color: #293845;
+        color: ${props => props.brightness ? "#ffffff" : "#293845"};
     }
 `
 const MovieAdvertise = styled.div`
@@ -60,7 +60,7 @@ const MovieAdvertise = styled.div`
 
     width: 145px;
     height: 209px;
-    background: #FFFFFF;
+    background: ${props => props.brightness ? "#d0d2d3" : "#FFFFFF"};
     box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.1);
     border-radius: 3px;
     margin-bottom: 15px;

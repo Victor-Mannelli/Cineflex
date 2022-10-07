@@ -5,7 +5,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import loading from "./files/loading.gif";
 import Seats from "./Seats";
 
-export default function SeatsPage() {
+export default function SeatsPage({ brightness }) {
 	let { id } = useParams();
 	const [seatsApi, setSeatsApi] = useState("");
 	const [nameInput, setNameInput] = useState("");
@@ -23,6 +23,7 @@ export default function SeatsPage() {
 
 	function HandleSubmit(element) {
 		element.preventDefault();
+		if (selectedSeats.length === 0) return
 
 		const reservation = { ids: selectedSeats, name: nameInput, cpf: cpfInput };
 		axios
@@ -46,18 +47,19 @@ export default function SeatsPage() {
 			</Loading>
 		);
 	return (
-		<StyledSeatsPage>
+		<StyledSeatsPage brightness={brightness}>
 			<PageTitle>
 				<h1> Selecione o(s) assento(s) </h1>
 			</PageTitle>
 			<Main>
 				<Seats
+					brightness={brightness}
 					seatsApi={seatsApi}
 					selectedSeats={selectedSeats}
 					setSelectedSeats={setSelectedSeats}
 				/>
 				<form onSubmit={HandleSubmit}>
-					<InputsDiv>
+					<InputsDiv brightness={brightness}>
 						<div>
 							<label htmlFor="name"> Nome do comprador: </label>
 							<input
@@ -90,10 +92,7 @@ export default function SeatsPage() {
 				</MoviePoster>
 				<div>
 					<h1> {seatsApi.movie.title} </h1>
-					<h1>
-						{" "}
-						{seatsApi.day.weekday} - {seatsApi.name}{" "}
-					</h1>
+					<h1> {seatsApi.day.weekday} - {seatsApi.name} </h1>
 				</div>
 			</SessionsFooter>
 		</StyledSeatsPage>
@@ -106,7 +105,7 @@ const StyledSeatsPage = styled.div`
 		font-size: 24px;
 		line-height: 28px;
 		letter-spacing: 0.04em;
-		color: #293845;
+		color: ${(props) => (props.brightness ? "#ffffff" : "#293845")};
 	}
 `;
 const PageTitle = styled.div`
@@ -142,6 +141,7 @@ const InputsDiv = styled.div`
 		}
 	}
 	label {
+		color: ${(props) => (props.brightness ? "#ffffff" : "#293845")};
 		text-align: start;
 		font-size: 18px;
 		line-height: 21px;
@@ -158,7 +158,7 @@ const SessionsFooter = styled.div`
 	min-height: 117px;
 	width: 100%;
 	padding-left: 10px;
-	background-color: #dfe6ed;
+	background-color: #d0d2d3;
 	border-top: 1px solid #9eadba;
 
 	h1 {

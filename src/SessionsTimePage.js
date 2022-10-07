@@ -4,7 +4,7 @@ import axios from "axios";
 import { useParams, Link } from "react-router-dom";
 import loading from "./files/loading.gif"
 
-export default function SessionsTimePage(){
+export default function SessionsTimePage({brightness}){
     let { id } = useParams();
     const [apiMovieData, setApiMovieData] = useState("");
     const [apiDaysData, setApiDaysData] = useState([]);
@@ -14,14 +14,20 @@ export default function SessionsTimePage(){
         promise.then((answer) => {setApiMovieData(answer.data); setApiDaysData(answer.data.days)})
     }, [])
 
-    if (apiDaysData.length === 0) return <Loading> <img src={loading} alt="loading" /> </Loading>
+    if (apiDaysData.length === 0) return <Loading> <img src={loading} alt="loading"/> </Loading>
     return (
-        <StyledSessionsTimePage>
+        <StyledSessionsTimePage brightness={brightness}>
             <PageTitle>
                 <h1> Selecione o horário </h1>
             </PageTitle>
             <AvalableSessions>
-                {apiDaysData.map(e => <Session key={e.id} weekday={e.weekday} date={e.date} showtimes={e.showtimes}/>)}
+                {apiDaysData.map(e =>
+                <Session
+                    key={e.id}
+                    weekday={e.weekday}
+                    date={e.date}
+                    showtimes={e.showtimes}
+                />)}
             </AvalableSessions>
             <SessionsFooter>
                 <MoviePoster>
@@ -52,7 +58,7 @@ const StyledSessionsTimePage = styled.div `
         font-size: 24px;
         line-height: 28px;
         letter-spacing: 0.04em;
-        color: #293845;
+        color: ${props => props.brightness ? "#ffffff" : "#293845"};
     }
 `
 const PageTitle = styled.div `
@@ -80,11 +86,12 @@ const SessionsFooter = styled.div `
     min-height: 117px;
     width: 100%;
     padding-left: 10px;
-    background-color: #dfe6ed;
     border-top: 1px solid #9EADBA;
+    background: #d0d2d3;
 
     h1 {
         margin-left: 15px;
+        text-align: start
     }
 `
 const MoviePoster = styled.div `
@@ -105,7 +112,7 @@ const MoviePoster = styled.div `
 `
 const Loading = styled.div `
     width: 100vw;
-    height: 400px;
+    height: 600px;
     display: flex;
     justify-content: center;
     align-items: center;

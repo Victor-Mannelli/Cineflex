@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import React from "react";
 
-export default function Seats({ seatsApi, selectedSeats, setSelectedSeats}) {
+export default function Seats({ seatsApi, selectedSeats, setSelectedSeats, brightness}) {
   return (
     <>
       <StyledSeats>
@@ -16,19 +16,19 @@ export default function Seats({ seatsApi, selectedSeats, setSelectedSeats}) {
         ))}
       </StyledSeats>
       <Models>
-        <ModelsDiv>
+        <ModelsDiv brightness={brightness}>
           <div style={{ background: "#1AAE9E", border: "1px solid #0E7D71" }}>
             {" "}
           </div>
           <p> Selecionado </p>
         </ModelsDiv>
-        <ModelsDiv>
+        <ModelsDiv brightness={brightness}>
           <div style={{ background: "#C3CFD9", border: "1px solid #7B8B99" }}>
             {" "}
           </div>
           <p> Disponível </p>
         </ModelsDiv>
-        <ModelsDiv>
+        <ModelsDiv brightness={brightness}>
           <div style={{ background: "#FBE192", border: "1px solid #F7C52B" }}>
             {" "}
           </div>
@@ -112,6 +112,6 @@ const ModelsDiv = styled.div`
     font-family: "Roboto";
     line-height: 15px;
     letter-spacing: -0.013em;
-    color: #4e5a65;
+    color: ${(props) => (props.brightness ? "#ffffff" : "#293845")};
   }
 `;
