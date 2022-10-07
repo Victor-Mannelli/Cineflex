@@ -1,9 +1,11 @@
 import styled from "styled-components";
 import React from "react";
-import { Link, useNavigate} from "react-router-dom";
+import { Link, useLocation, useNavigate} from "react-router-dom";
 
 export default function Header({brightness, setBrightness}) {
 	const navigate = useNavigate()
+	const location = useLocation()
+
 	return (
 		<StyledHeader>
 			<Link to="/">
@@ -22,13 +24,15 @@ export default function Header({brightness, setBrightness}) {
 					></ion-icon>
 				)}
 			</DarkmodeButton>
-            <GoBackArrow onClick={() => navigate(-1)}>
-                {brightness ? (
-                        <ion-icon name="arrow-undo"></ion-icon>
-                    ) : (
-                        <ion-icon name="arrow-undo-outline"></ion-icon>
-                    )}
-            </GoBackArrow>
+			{location.pathname !== "/" && 
+				<GoBackArrow onClick={() => navigate(-1)}>
+					{brightness ? (
+							<ion-icon name="arrow-undo"></ion-icon>
+						) : (
+							<ion-icon name="arrow-undo-outline"></ion-icon>
+						)}
+				</GoBackArrow>
+			}
 		</StyledHeader>
 	);
 }
