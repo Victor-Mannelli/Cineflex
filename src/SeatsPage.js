@@ -184,7 +184,7 @@ const MoviePoster = styled.div`
 `;
 const Loading = styled.div`
 	width: 100vw;
-	height: 400px;
+	height: 600px;
 	display: flex;
 	justify-content: center;
 	align-items: center;

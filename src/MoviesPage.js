@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import React from 'react';
 import {Link} from "react-router-dom"
+import loading from "./files/loading.gif"
 
 export default function MoviesPage({brightness}) {
     const [apiMovieList, setApiMovieList] = useState([])
@@ -11,6 +12,7 @@ export default function MoviesPage({brightness}) {
         promise.then(answer => setApiMovieList(answer.data))
 
     }, [])
+    if (apiMovieList.length === 0) return <Loading> <img src={loading} alt="loading" /></Loading>
 
     return (
         <StyledMoviePage brightness={brightness} >
@@ -75,3 +77,14 @@ const Movies = styled.div`
     flex-wrap: wrap;
     justify-content: space-evenly;
 `
+const Loading = styled.div`
+	width: 100vw;
+	height: 600px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	img {
+		height: 100px;
+	}
+`;
