@@ -67,7 +67,7 @@ const PageTitle = styled.div`
 `;
 const InfoDiv = styled.div`
 	h1 {
-		text-align: start;
+		text-align: center;
 		font-weight: 700;
 		font-size: 24px;
 		line-height: 28px;
@@ -78,11 +78,22 @@ const InfoDiv = styled.div`
 	div {
 		margin-bottom: 40px;
 		p {
+			text-align: center;
 			font-family: "Roboto";
 			font-size: 22px;
 			line-height: 26px;
 			letter-spacing: 0.04em;
 			color: ${(props) => (props.brightness ? "#ffffff" : "#293845")};
+		}
+	}
+	@media (max-width: 600px) {
+		h1 {
+			text-align: start;
+		}
+		div {
+			p {
+				text-align: start;
+			}
 		}
 	}
 `;
