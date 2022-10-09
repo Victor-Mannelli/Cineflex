@@ -89,8 +89,11 @@ const PageTitle = styled.div`
 `;
 const AvalableSessions = styled.div`
 	height: 100%;
-	margin: 0 0 117px 24px;
+	margin: 0 24px 70px 24px;
 	overflow: scroll;
+	@media (max-width: 600px) {
+		margin: 0 24px 117px 24px;
+	}
 `;
 const SessionsFooter = styled.div`
 	position: fixed;
