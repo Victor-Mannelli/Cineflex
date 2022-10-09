@@ -99,6 +99,11 @@ export default function SeatsPage({ brightness }) {
 	);
 }
 const StyledSeatsPage = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
 	h1 {
 		text-align: center;
 		font-family: "Roboto";
@@ -114,15 +119,27 @@ const PageTitle = styled.div`
 	justify-content: center;
 	align-items: center;
 
-	height: 110px;
+	height: 90px;
 	width: 100%;
+
+	@media (max-width: 600px) {
+		height: 110px;
+	}
 `;
 const Main = styled.div`
-	margin: 0 24px 117px 24px;
+
+	width: 450px;
+	height: 100%;
+	margin: 0 24px 80px 24px;
+	
+	@media (max-width: 600px) {
+		width: 80vw;
+		margin: 0 24px 117px 24px;
+	}
 `;
 const InputsDiv = styled.div`
 	input {
-		width: 90vw;
+		width: 450px;
 		height: 51px;
 		margin: 5px 0 10px 0;
 		padding: 0 18px;
@@ -140,11 +157,21 @@ const InputsDiv = styled.div`
 			color: #afafaf;
 		}
 	}
+	div {
+		display: flex;
+		flex-direction: column;
+	}
 	label {
 		color: ${(props) => (props.brightness ? "#ffffff" : "#293845")};
 		text-align: start;
 		font-size: 18px;
 		line-height: 21px;
+	}
+	
+	@media (max-width: 600px) {
+		input {
+			width: 80vw;
+		}
 	}
 `;
 const SessionsFooter = styled.div`
@@ -155,15 +182,22 @@ const SessionsFooter = styled.div`
 	display: flex;
 	align-items: center;
 
-	min-height: 117px;
+	min-height: 70px;
 	width: 100%;
 	padding-left: 10px;
-	background-color: #d0d2d3;
 	border-top: 1px solid #9eadba;
+	background: #d0d2d3;
 
 	h1 {
 		margin-left: 15px;
 		text-align: start;
+        font-size: 18px;
+	}
+	@media (max-width: 600px) {
+		min-height: 117px;
+        h1 {
+            font-size: 24px;
+        }
 	}
 `;
 const MoviePoster = styled.div`
@@ -171,15 +205,25 @@ const MoviePoster = styled.div`
 	justify-content: center;
 	align-items: center;
 
-	width: 64px;
-	height: 89px;
+	width: 44px;
+	height: 59px;
 	background: #ffffff;
 	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 	border-radius: 2px;
 
 	img {
-		width: 48px;
-		height: 72px;
+		width: 38px;
+		height: 52px;
+	}
+    
+	@media (max-width: 600px) {
+		width: 64px;
+		height: 89px;
+
+		img {
+			width: 48px;
+			height: 72px;
+		}
 	}
 `;
 const Loading = styled.div`

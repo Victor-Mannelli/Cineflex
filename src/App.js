@@ -31,7 +31,11 @@ export default function App() {
   );
 }
 const Main = styled.div `
-  margin-top: 67px;
+  margin-top: 34px;
   background: ${props => props.brightness ? `url(${darkBG})` : `url(${background})`} ;
   object-fit: fill;
+  
+  @media (max-width: 600px) {
+    margin-top: 67px;
+	}
 `

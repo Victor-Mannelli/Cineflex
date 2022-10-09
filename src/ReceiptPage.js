@@ -2,7 +2,7 @@ import styled from "styled-components";
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 
-export default function ReceiptPage({brightness}) {
+export default function ReceiptPage({ brightness }) {
 	const { state } = useLocation();
 
 	return (
@@ -44,7 +44,7 @@ export default function ReceiptPage({brightness}) {
 }
 const StyledReceiptPage = styled.div`
 	margin: 0 24px;
-	height: 100vh;
+	height: 100%;
 
 	h1 {
 		text-align: center;
@@ -53,7 +53,7 @@ const StyledReceiptPage = styled.div`
 		font-size: 24px;
 		line-height: 28px;
 		letter-spacing: 0.04em;
-		color: ${props => props.brightness ? "#ffffff" : "#293845"};
+		color: ${(props) => (props.brightness ? "#ffffff" : "#293845")};
 	}
 `;
 const PageTitle = styled.div`
@@ -72,18 +72,17 @@ const InfoDiv = styled.div`
 		font-size: 24px;
 		line-height: 28px;
 		letter-spacing: 0.04em;
-		color: ${props => props.brightness ? "#ffffff" : "#293845"};
+		color: ${(props) => (props.brightness ? "#ffffff" : "#293845")};
 		margin-bottom: 10px;
 	}
 	div {
 		margin-bottom: 40px;
-
 		p {
 			font-family: "Roboto";
 			font-size: 22px;
 			line-height: 26px;
 			letter-spacing: 0.04em;
-			color: ${props => props.brightness ? "#ffffff" : "#293845"};
+			color: ${(props) => (props.brightness ? "#ffffff" : "#293845")};
 		}
 	}
 `;
@@ -107,5 +106,10 @@ const HomeButtonDiv = styled.div`
 		line-height: 21px;
 		letter-spacing: 0.04em;
 		color: #ffffff;
+	}
+	@media (max-width: 600px) {
+		button {
+			width: 50vw;
+		}
 	}
 `;

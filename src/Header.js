@@ -23,6 +23,7 @@ export default function Header({brightness, setBrightness}) {
 						name="radio-button-off-outline"
 					></ion-icon>
 				)}
+				<p> Tema </p>
 			</DarkmodeButton>
 			{location.pathname !== "/" && 
 				<GoBackArrow onClick={() => navigate(-1)}>
@@ -45,29 +46,58 @@ const StyledHeader = styled.div`
 	justify-content: center;
 	align-items: center;
 
-	width: 100vw;
-	min-height: 67px;
+	width: 100%;
+	height: 37px;
 	background: #d0d2d3;
 	box-shadow: 0 0 10px 10px rgba(50, 50, 93, 0.25);
 
 	h1 {
 		color: #293845;
 		font-family: "Roboto";
-		font-size: 34px;
+		font-size: 18px;
 		line-height: 40px;
+	}
+	@media (max-width: 600px) {
+		height: 67px;
+		h1 {
+			font-size: 34px;
+		}
 	}
 `;
 const DarkmodeButton = styled.div`
 	position: fixed;
 	right: 10px;
-	font-size: 30px;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-size: 17px;
     padding-top: 4px;
 	cursor: pointer;
+
+	p {
+		color: #293845;
+		font-family: "Roboto";
+		padding-top: 2px;
+		font-size: 10px;
+	}
+
+	@media (max-width: 600px) {
+		font-size: 30px;
+		
+		p {
+			font-size: 15px;
+		}
+	}
 `;
 const GoBackArrow = styled.div `
     position: fixed;
     left: 10px;
-    font-size: 30px;
+    font-size: 23px;
     padding-top: 4px;
 	cursor: pointer;
+	@media (max-width: 600px) {
+		font-size: 30px;
+	}
 `

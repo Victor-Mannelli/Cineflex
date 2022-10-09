@@ -42,8 +42,12 @@ const PageTitle = styled.div`
     justify-content: center;
     align-items: center;
 
-    height: 110px;
-    width: 100%;
+    height: 90px;
+	width: 100%;
+
+	@media (max-width: 600px) {
+		height: 110px;
+	}
 `
 const StyledMoviePage = styled.div`
     h1 {
