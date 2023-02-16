@@ -1,15 +1,14 @@
-import Header from "./Header";
-import GlobalStyles from "./GlobalStyles";
-import MoviesPage from "./MoviesPage";
-import SessionsTimePage from "./SessionsTimePage";
-import SeatsPage from "./SeatsPage";
-import ReceiptPage from "./ReceiptPage";
-import background from "./files/background.jpg"
 import darkBG from "./files/darkmodeBackground.jpg"
-
+import background from "./files/background.jpg"
+import styled from "styled-components";
+import GlobalStyles from "./GlobalStyles";
 import React, {useState} from "react";
 import {BrowserRouter, Routes, Route } from "react-router-dom";
-import styled from "styled-components";
+import Header from "./Routes/Components/Header";
+import MoviesPage from "./Routes/MoviesPage";
+import SessionsTimePage from "./Routes/SessionTimePage";
+import SeatsPage from "./Routes/SeatsPage";
+import ReceiptPage from "./Routes/ReceiptPage";
 
 export default function App() {
   const [brightness, setBrightness] = useState(false);

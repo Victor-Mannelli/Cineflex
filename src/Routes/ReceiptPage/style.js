@@ -1,48 +1,6 @@
 import styled from "styled-components";
-import React from "react";
-import { Link, useLocation } from "react-router-dom";
 
-export default function ReceiptPage({ brightness }) {
-	const { state } = useLocation();
-
-	return (
-		<StyledReceiptPage brightness={brightness}>
-			<PageTitle>
-				<h1> Pedido feito com sucesso </h1>
-			</PageTitle>
-			<InfoDiv brightness={brightness}>
-				<h1> Filme e sessão </h1>
-				<div>
-					<p>{state.seatsApi.movie.title}</p>
-					<p>
-						{state.seatsApi.day.weekday} - {state.seatsApi.name}
-					</p>
-				</div>
-			</InfoDiv>
-			<InfoDiv brightness={brightness}>
-				<h1> Ingressos </h1>
-				<div>
-					{state.selectedSeats.map((e) => (
-						<p key={e}> Assento {e} </p>
-					))}
-				</div>
-			</InfoDiv>
-			<InfoDiv brightness={brightness}>
-				<h1> Comprador </h1>
-				<div>
-					{<p> Nome: {state.nameInput} </p>}
-					{<p> CPF: {state.cpfInput} </p>}
-				</div>
-			</InfoDiv>
-			<HomeButtonDiv>
-				<Link to="/">
-					<button> Voltar para Home </button>
-				</Link>
-			</HomeButtonDiv>
-		</StyledReceiptPage>
-	);
-}
-const StyledReceiptPage = styled.div`
+export const StyledReceiptPage = styled.div`
 	margin: 0 24px;
 	height: 100%;
 
@@ -56,7 +14,7 @@ const StyledReceiptPage = styled.div`
 		color: ${(props) => (props.brightness ? "#ffffff" : "#293845")};
 	}
 `;
-const PageTitle = styled.div`
+export const PageTitle = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -65,7 +23,7 @@ const PageTitle = styled.div`
 	height: 110px;
 	width: 100%;
 `;
-const InfoDiv = styled.div`
+export const InfoDiv = styled.div`
 	h1 {
 		text-align: center;
 		font-weight: 700;
@@ -97,7 +55,7 @@ const InfoDiv = styled.div`
 		}
 	}
 `;
-const HomeButtonDiv = styled.div`
+export const HomeButtonDiv = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
