@@ -17,7 +17,7 @@ export default function SeatsPage({ brightness }) {
 
   useEffect(() => {
     axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${id}/seats`).then((answer) => setSeatsApi(answer.data));
-  }, []);
+  }, [id]);
 
   function HandleSubmit(element) {
     element.preventDefault();
@@ -37,8 +37,7 @@ export default function SeatsPage({ brightness }) {
   if (seatsApi.length === 0) {
     return (
       <Loading>
-        {" "}
-        <img src={loading} alt="loading" />{" "}
+        <img src={loading} alt="loading" />
       </Loading>
     );
   }

@@ -16,7 +16,7 @@ export default function SessionsTimePage({ brightness }) {
       setApiMovieData(answer.data);
       setApiDaysData(answer.data.days);
     });
-  }, []);
+  }, [id]);
 
   if (apiDaysData.length === 0)
     return (
