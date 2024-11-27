@@ -15,19 +15,7 @@ export const StyledSeatsPage = styled.div`
 		color: ${(props) => (props.brightness ? "#ffffff" : "#293845")};
 	}
 `;
-export const PageTitle = styled.div`
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
 
-	height: 90px;
-	width: 100%;
-
-	@media (max-width: 600px) {
-		height: 110px;
-	}
-`;
 export const Main = styled.div`
 
 	width: 450px;

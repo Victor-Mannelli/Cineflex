@@ -11,26 +11,19 @@ export default function Header({ brightness, setBrightness }) {
 			<Link to="/">
 				<h1> CINEFLEX </h1>
 			</Link>
-			<DarkmodeButton>
+			<DarkmodeButton onClick={() => setBrightness((prevState) => !prevState)}>
 				{brightness ? (
-					<ion-icon
-						onClick={() => setBrightness(false)}
-						name="radio-button-on-outline"
-					></ion-icon>
+					<ion-icon name="moon" />
 				) : (
-					<ion-icon
-						onClick={() => setBrightness(true)}
-						name="radio-button-off-outline"
-					></ion-icon>
+					<ion-icon name="sunny" />
 				)}
-				<p> Tema </p>
 			</DarkmodeButton>
 			{location.pathname !== "/" && (
 				<GoBackArrow onClick={() => navigate(-1)}>
 					{brightness ? (
-						<ion-icon name="arrow-undo"></ion-icon>
+						<ion-icon name="arrow-undo" />
 					) : (
-						<ion-icon name="arrow-undo-outline"></ion-icon>
+						<ion-icon name="arrow-undo-outline" />
 					)}
 				</GoBackArrow>
 			)}

@@ -14,15 +14,7 @@ export const StyledReceiptPage = styled.div`
 		color: ${(props) => (props.brightness ? "#ffffff" : "#293845")};
 	}
 `;
-export const PageTitle = styled.div`
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
 
-	height: 110px;
-	width: 100%;
-`;
 export const InfoDiv = styled.div`
 	h1 {
 		text-align: center;

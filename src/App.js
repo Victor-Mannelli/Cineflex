@@ -30,11 +30,15 @@ export default function App() {
   );
 }
 const Main = styled.div `
-  margin-top: 34px;
+  min-height: calc(100vh - 3rem);
+  margin-top: 3rem;
   background: ${props => props.brightness ? `url(${darkBG})` : `url(${background})`} ;
   object-fit: fill;
-  
-  @media (max-width: 600px) {
-    margin-top: 67px;
-	}
 `
+export const PageTitle = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 1.5rem;
+`;

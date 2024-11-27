@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { PageTitle } from "../SessionTimePage/style";
 import { InfoDiv, StyledReceiptPage, HomeButtonDiv } from "./style";
+import { PageTitle } from "../../App"
 
 export default function ReceiptPage({ brightness }) {
 	const { state } = useLocation();
