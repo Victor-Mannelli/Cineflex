@@ -1,22 +1,43 @@
 import styled from "styled-components";
 
 export const StyledSessionsTimePage = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding-bottom: 90px;
+
   h1 {
     text-align: center;
     font-family: "Roboto";
     font-size: 24px;
     line-height: 28px;
     letter-spacing: 0.04em;
-    color: ${(props) => (props.brightness ? "#ffffff" : "#293845")};
+    color: ${(props) => (props.darkmode ? "#ffffff" : "#293845")};
+  }
+
+  @media (max-width: 680px) {
+    padding-bottom: 150px;
   }
 `;
 
 export const AvalableSessions = styled.div`
-  height: 100%;
-  margin: 0 24px 70px 24px;
-  overflow: scroll;
-  @media (max-width: 600px) {
-    margin: 0 24px 117px 24px;
+  display: flex;
+  justify-content: start;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  width: 77rem;
+
+  @media (max-width: 1280px) {
+    width: 51rem;
+  }
+  @media (max-width: 980px) {
+    width: 25rem;
+  }
+  @media (max-width: 680px) {
+    justify-content: center;
+    width: 100%;
   }
 `;
 export const SessionsFooter = styled.div`
@@ -37,12 +58,13 @@ export const SessionsFooter = styled.div`
     margin-left: 15px;
     text-align: start;
     font-size: 18px;
+    color: #293845;
   }
   @media (max-width: 600px) {
     min-height: 117px;
     h1 {
       font-size: 24px;
-			color: #293845;
+      color: #293845;
     }
   }
 `;
@@ -84,10 +106,16 @@ export const Loading = styled.div`
   }
 `;
 export const PlayTime = styled.div`
+  background: ${(props) => (props.darkmode ? "#d0d2d3" : "#ffffff")};
+  width: 25rem;
+  padding: 1rem;
+  border-radius: 5px;
+
   h1 {
     text-align: start;
     text-decoration: none;
     margin-bottom: 25px;
+    color: #293845;
   }
   button {
     width: 83px;
@@ -95,7 +123,16 @@ export const PlayTime = styled.div`
     background: #e8833a;
     border-radius: 3px;
     border: none;
-    margin: 0 5px 25px 0;
     color: white;
   }
+
+  @media (max-width: 680px) {
+    width: 90%;
+  }
+`;
+
+export const HourRappers = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
 `;

@@ -11,28 +11,28 @@ import SeatsPage from "./Routes/SeatsPage";
 import ReceiptPage from "./Routes/ReceiptPage";
 
 export default function App() {
-  const [brightness, setBrightness] = useState(false);
+  const [darkmode, setDarkmode] = useState(false);
 
   return (
     <BrowserRouter>
-      <Header brightness={brightness} setBrightness={setBrightness}/>
-      <Main brightness={brightness}>
+      <Header darkmode={darkmode} setDarkmode={setDarkmode}/>
+      <Main darkmode={darkmode}>
         <Routes>
-          <Route path="/" element={< MoviesPage brightness={brightness} />} />
-          <Route path="/sessions/:id" element={< SessionsTimePage brightness={brightness}/>} />
-          <Route path="/seats/:id" element={< SeatsPage brightness={brightness}/>} />
-          <Route path="/receipt" element={< ReceiptPage brightness={brightness}/>} />
+          <Route path="/" element={< MoviesPage darkmode={darkmode} />} />
+          <Route path="/sessions/:id" element={< SessionsTimePage darkmode={darkmode}/>} />
+          <Route path="/seats/:id" element={< SeatsPage darkmode={darkmode}/>} />
+          <Route path="/receipt" element={< ReceiptPage darkmode={darkmode}/>} />
           <Route path="/*" element={<h1> ERRO 404 </h1>} />
         </Routes>
       </Main>
-        <GlobalStyles />
+      <GlobalStyles />
     </BrowserRouter>
   );
 }
 const Main = styled.div `
   min-height: calc(100vh - 3rem);
   margin-top: 3rem;
-  background: ${props => props.brightness ? `url(${darkBG})` : `url(${background})`} ;
+  background: ${props => props.darkmode ? `url(${darkBG})` : `url(${background})`} ;
   object-fit: fill;
 `
 export const PageTitle = styled.div`

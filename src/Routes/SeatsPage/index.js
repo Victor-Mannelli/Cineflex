@@ -7,7 +7,7 @@ import Seats from "../Components/Seats";
 import React from "react";
 import axios from "axios";
 
-export default function SeatsPage({ brightness }) {
+export default function SeatsPage({ darkmode }) {
   let { id } = useParams();
   const [seatsApi, setSeatsApi] = useState("");
   const [nameInput, setNameInput] = useState("");
@@ -42,14 +42,14 @@ export default function SeatsPage({ brightness }) {
     );
   }
   return (
-    <StyledSeatsPage brightness={brightness}>
+    <StyledSeatsPage darkmode={darkmode}>
       <PageTitle>
         <h1> Selecione o(s) assento(s) </h1>
       </PageTitle>
       <Main>
-        <Seats brightness={brightness} seatsApi={seatsApi} selectedSeats={selectedSeats} setSelectedSeats={setSelectedSeats} />
+        <Seats darkmode={darkmode} seatsApi={seatsApi} selectedSeats={selectedSeats} setSelectedSeats={setSelectedSeats} />
         <form onSubmit={HandleSubmit}>
-          <InputsDiv brightness={brightness}>
+          <InputsDiv darkmode={darkmode}>
             <div>
               <label htmlFor="name"> Nome do comprador: </label>
               <input required name="name" type="text" onChange={(e) => setNameInput(e.target.value)} placeholder="Digite seu nome..."></input>
@@ -64,14 +64,13 @@ export default function SeatsPage({ brightness }) {
           </SeatReservation>
         </form>
       </Main>
-      <SessionsFooter>
+      <SessionsFooter darkmode={darkmode}>
         <MoviePoster>
           <img src={seatsApi.movie.posterURL} alt="Poster" />
         </MoviePoster>
         <div>
           <h1> {seatsApi.movie.title} </h1>
           <h1>
-            {" "}
             {seatsApi.day.weekday} - {seatsApi.name}{" "}
           </h1>
         </div>

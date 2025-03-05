@@ -6,7 +6,7 @@ import loading from "../../files/loading.gif";
 import React from "react";
 import axios from "axios";
 
-export default function MoviesPage({ brightness }) {
+export default function MoviesPage({ darkmode }) {
   const [apiMovieList, setApiMovieList] = useState([]);
 
   useEffect(() => {
@@ -23,14 +23,14 @@ export default function MoviesPage({ brightness }) {
   }
 
   return (
-    <StyledMoviePage brightness={brightness}>
+    <StyledMoviePage darkmode={darkmode}>
       <PageTitle>
         <h1> Selecione o filme </h1>
       </PageTitle>
-      <Movies brightness={brightness}>
+      <Movies darkmode={darkmode}>
         {apiMovieList.map((e) => (
           <Link key={e.id} to={`/sessions/${e.id}`}>
-            <Movie image={e.posterURL} brightness={brightness} />
+            <Movie image={e.posterURL} darkmode={darkmode} />
           </Link>
         ))}
       </Movies>
@@ -38,9 +38,9 @@ export default function MoviesPage({ brightness }) {
   );
 }
 
-function Movie({ image, brightness }) {
+function Movie({ image, darkmode }) {
   return (
-    <MovieAdvertise brightness={brightness}>
+    <MovieAdvertise darkmode={darkmode}>
       <img src={image} alt="" />
     </MovieAdvertise>
   );

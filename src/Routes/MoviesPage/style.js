@@ -14,7 +14,7 @@ export const StyledMoviePage = styled.div`
     font-size: 24px;
     line-height: 28px;
     letter-spacing: 0.04em;
-    color: ${(props) => (props.brightness ? "#ffffff" : "#293845")};
+    color: ${(props) => (props.darkmode ? "#ffffff" : "#293845")};
   }
 `;
 export const MovieAdvertise = styled.div`
@@ -24,7 +24,7 @@ export const MovieAdvertise = styled.div`
 
   width: 9rem;
   height: 12.5rem;
-  background: ${(props) => (props.brightness ? "#d0d2d3" : "#FFFFFF")};
+  background: ${(props) => (props.darkmode ? "#d0d2d3" : "#FFFFFF")};
   box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.1);
   border-radius: 3px;
 
